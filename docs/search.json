@@ -1,10 +1,10 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "devicl.github.io",
+    "objectID": "dataviz.html",
+    "href": "dataviz.html",
+    "title": "Simpsons",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Introduction\nIn this project, I will use data from the TidyTuesday folder for February 2, 2025. The original data is from https://www.kaggle.com/datasets/prashant111/the-simpsons-dataset, which is a kraggle data set authored by Prashant Banerjee. This data is further scraped by other users. The data is split into four data frames of characters, episodes, locations, and script lines. I focused on script line count among the characters with the over 2000 cumulative word counts.\nGraph and Code\n\nknown_character &lt;- simpsons_script_lines |&gt;\n  group_by(character_id) |&gt;\n  summarize(total_word_count = sum(word_count, na.rm = TRUE)) |&gt;\n  filter(total_word_count &gt; 2000)\nknown_character\n\n# A tibble: 16 × 2\n   character_id total_word_count\n          &lt;dbl&gt;            &lt;dbl&gt;\n 1            1            23903\n 2            2            52649\n 3            3             5023\n 4            8            22528\n 5            9            21675\n 6           11             4319\n 7           15             6841\n 8           17             8773\n 9           25             4075\n10           31             4815\n11           71             3962\n12          101             2067\n13          139             3857\n14          165             2944\n15          211             2271\n16         1078             2533\n\nknown_character|&gt;\n  ggplot(aes(x = character_id, y = total_word_count)) +\n  geom_point() +\n  labs(\n    title = \"Characters with the Highest Word Count\",\n    x = \"Character Identification\",\n    y = \"Total Word Count\"\n  )\n\n\n\n\n\n\n\n\nAnalysis\nFor this data, we can see that the characters that have said over 2000 words is limited to 16 characters. Characters that appear earlier in the character id line seem to be prominent to appear as prolific characters. The next step in this data is to identify a match between character id to character name across data frames to better understand which characters are favored for lines. If we were to exclude the main Simpson family, which characters would receive the most attention?"
   },
   {
     "objectID": "about.html",
@@ -12,5 +12,12 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "dataviz2.html",
+    "href": "dataviz2.html",
+    "title": "Groundhog",
+    "section": "",
+    "text": "Introduction\nThis project draws its data from the GitHub repository TidyTuesday’s 2024-01-30 folder titled “Groundhog Predictions”. This data is originally from https://groundhog-day.com/. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada.\n\nshadow_prediction  &lt;- predictions |&gt;\n  group_by(year) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\nshadow_prediction\n\n# A tibble: 138 × 2\n    year total_shadow_count\n   &lt;dbl&gt;              &lt;int&gt;\n 1  1886                  0\n 2  1887                  1\n 3  1888                  1\n 4  1889                  0\n 5  1890                  0\n 6  1891                  0\n 7  1892                  0\n 8  1893                  0\n 9  1894                  0\n10  1895                  0\n# ℹ 128 more rows\n\nggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +\n  geom_col()\n\n\n\n\n\n\n\n\nGraphing and Code\n\nid_prediction  &lt;- predictions |&gt;\n  group_by(id) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\n\nggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +\n  geom_col() +\n  labs(\n    title = \"Longer winter predictions per Ground Hog\"\n  )\n\n\n\n\n\n\n\nggplot(predictions, aes(x = year, fill = shadow)) +\n  geom_bar() +\n  labs()\n\n\n\n\n\n\n\n\nAnalysis\nThe first graph isolates the total count of observed shadows by year. Similarly, the third graph reiterates this idea by presenting the count of all shadow predictions per year. From these graphs, it is obvious that there is a growing number of predictions by different groundhogs. The growth in groundhog day popularity is especially visible when we view the third graph in conjunction with the second graph showing the consistency and recency in groundhog count of predictions. In the second graph, we can see that earlier groundhogs have had a greater impact on the data for winter predictions."
   }
 ]

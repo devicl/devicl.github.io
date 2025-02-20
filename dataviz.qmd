@@ -1,0 +1,49 @@
+---
+title: "Simpsons"
+description: |
+  Analysis of Super Mario Kart data from TidyTuesday
+author: Devi Canseco
+date: February 18, 2025
+format: html
+---
+
+**Introduction**
+
+In this project, I will use data from the TidyTuesday folder for February 2, 2025. The original data is from <https://www.kaggle.com/datasets/prashant111/the-simpsons-dataset>, which is a kraggle data set authored by Prashant Banerjee. This data is further scraped by other users. The data is split into four data frames of characters, episodes, locations, and script lines. I focused on script line count among the characters with the over 2000 cumulative word counts.
+
+```{r, include=FALSE}
+
+tuesdata <- tidytuesdayR::tt_load('2025-02-04')
+
+simpsons_characters <- tuesdata$simpsons_characters
+simpsons_episodes <- tuesdata$simpsons_episodes
+simpsons_locations <- tuesdata$simpsons_locations
+simpsons_script_lines <- tuesdata$simpsons_script_lines
+
+library(tidyverse)
+```
+
+**Graph and Code**
+
+```{r}
+known_character <- simpsons_script_lines |>
+  group_by(character_id) |>
+  summarize(total_word_count = sum(word_count, na.rm = TRUE)) |>
+  filter(total_word_count > 2000)
+known_character
+
+known_character|>
+  ggplot(aes(x = character_id, y = total_word_count)) +
+  geom_point() +
+  labs(
+    title = "Characters with the Highest Word Count",
+    x = "Character Identification",
+    y = "Total Word Count"
+  )
+
+  
+```
+
+**Analysis**
+
+For this data, we can see that the characters that have said over 2000 words is limited to 16 characters. Characters that appear earlier in the character id line seem to be prominent to appear as prolific characters. The next step in this data is to identify a match between character id to character name across data frames to better understand which characters are favored for lines. If we were to exclude the main Simpson family, which characters would receive the most attention?

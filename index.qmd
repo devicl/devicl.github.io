@@ -1,11 +1,16 @@
 ---
-title: "devicl.github.io"
+title: "Devi Canseco Lopez"
+image: DSC_0312.JPG
+toc: false
+about: 
+  template: solana
+  image-shape: rectangle
+  image-width: 17em
+  links:
+    - text: LinkedIn
+      href: https://www.linkedin.com/in/devi-canseco-lopez-7a089132a 
+    - text: GitHub
+      href: https://github.com/devicl
+    - text: Email
+      href: ddcx2023@mymail.pomona.edu
 ---
-
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```

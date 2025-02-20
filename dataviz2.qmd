@@ -1,0 +1,56 @@
+---
+title: "Groundhog"
+description: |
+  Analysis of Groundhog Prediction data from TidyTuesday
+author: Devi Canseco
+date: February 18, 2025
+format: html
+---
+
+```{r, include=FALSE}
+
+tuesdata <- tidytuesdayR::tt_load('2024-01-30')
+
+groundhogs <- tuesdata$groundhogs
+predictions <- tuesdata$predictions
+
+library(tidyverse)
+```
+
+**Introduction**
+
+This project draws its data from the GitHub repository TidyTuesday's 2024-01-30 folder titled "Groundhog Predictions". This data is originally from <https://groundhog-day.com/>. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada.
+
+```{r}
+shadow_prediction  <- predictions |>
+  group_by(year) |>
+  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))
+shadow_prediction
+
+ggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +
+  geom_col()
+
+
+```
+
+**Graphing and Code**
+
+```{r}
+id_prediction  <- predictions |>
+  group_by(id) |>
+  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))
+
+ggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +
+  geom_col() +
+  labs(
+    title = "Longer winter predictions per Ground Hog"
+  )
+
+ggplot(predictions, aes(x = year, fill = shadow)) +
+  geom_bar() +
+  labs()
+```
+
+**Analysis**
+
+The first graph isolates the total count of observed shadows by year. Similarly, the third graph reiterates this idea by presenting the count of all shadow predictions per year. From these graphs, it is obvious that there is a growing number of predictions by different groundhogs. The growth in groundhog day popularity is especially visible when we view the third graph in conjunction with the second graph showing the consistency and recency in groundhog count of predictions. In the second graph, we can see that earlier groundhogs have had a greater impact on the data for winter predictions.

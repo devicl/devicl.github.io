@@ -3,18 +3,25 @@ project:
   output-dir: docs
   
 website:
-  title: "devicl.github.io"
+  site-url: hhtps://devicl.github.io/
+  title: "Devi Canseco"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        href: index.qmd
+      - text: "Data Viz"
+        menu:
+        - text: "Simpsons"
+          href: dataviz.html
+        - text: "Groundhog Predictions"
+          href: dataviz2.html
 
 format:
   html:
     theme: cosmo
     css: styles.css
     toc: true
+    page-layout: full
 
 editor: visual
 
