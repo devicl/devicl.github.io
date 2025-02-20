@@ -43,12 +43,18 @@ id_prediction  <- predictions |>
 ggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +
   geom_col() +
   labs(
-    title = "Longer winter predictions per Ground Hog"
+    title = "Longer winter predictions per Ground Hog",
+    x = "Groundhog identification",
+    y = "Saw Shadow Count"
   )
 
 ggplot(predictions, aes(x = year, fill = shadow)) +
   geom_bar() +
-  labs()
+  labs(
+    title = "Yearly Shadow Predictions",
+    x = "Year",
+    y = "Total Predictions"
+  )
 ```
 
 **Analysis**
