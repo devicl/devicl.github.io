@@ -13,4 +13,6 @@ about:
       href: https://github.com/devicl
     - text: Email
       href: ddcx2023@mymail.pomona.edu
+    - text: Website Repository
+      href: https://github.com/devicl/devicl.github.io
 ---

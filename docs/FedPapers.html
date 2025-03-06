@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Devi Canseco">
+<meta name="dcterms.date" content="2025-03-05">
+<meta name="description" content="Analysis of character strings in the Federalist Papers data from TidyTuesday">
 
-<title>Devi Canseco Lopez – Devi Canseco</title>
+<title>Federalist Papers Analysis – Devi Canseco</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +22,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -33,6 +70,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -88,7 +126,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -121,41 +159,155 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
-<!-- main -->
-<div class="quarto-about-solana column-page">
-  <div class="about-entity">
-    <div class="entity-contents">
-      <header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Devi Canseco Lopez</h1>
-</div>
-<div class="quarto-title-meta column-page">
-  </div>
-</header> <div class="about-links">
-  <a href="https://www.linkedin.com/in/devi-canseco-lopez-7a089132a" class="about-link" rel="" target="">
-     <span class="about-link-text">LinkedIn</span>
-  </a>
-  <a href="https://github.com/devicl" class="about-link" rel="" target="">
-     <span class="about-link-text">GitHub</span>
-  </a>
-  <a href="/ddcx2023@mymail.pomona.edu" class="about-link" rel="" target="">
-     <span class="about-link-text">Email</span>
-  </a>
-  <a href="https://github.com/devicl/devicl.github.io" class="about-link" rel="" target="">
-     <span class="about-link-text">Website Repository</span>
-  </a>
-</div>
-      <div class="about-contents"><main class="content column-page" id="quarto-document-content">
-
-
-</main></div>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
-    <img src="DSC_0312.JPG" class="about-image
-  rectangle " style="width: 17em;">
+<!-- main -->
+<main class="content column-page" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Federalist Papers Analysis</h1>
+</div>
+
+<div>
+  <div class="description">
+    <p>Analysis of character strings in the Federalist Papers data from TidyTuesday</p>
   </div>
 </div>
- <!-- /main -->
+
+
+<div class="quarto-title-meta column-page">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Devi Canseco </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 5, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong>Introduction</strong></p>
+<p>This is project 2 which seeks to work with string and character data. The data used comes from nicholasjhorton’s GitHub repository which provides a data frame for the Federalist papers.</p>
+<p><strong>Establishing a Government</strong></p>
+<p>Since the purpose of the Federalist Papers is to defend the Constitution that establishes the U.S government branches, I proceeded to examine how many times this purpose is linked through mentions of the words “government”. I provided an alternative “confederacy” due to its predecessor, the Articles of Confederation, as a name for government in reference to the United States.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Country_FedPapers <span class="ot">&lt;-</span> FederalistPapers <span class="sc">|&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Country_FedPapers =</span> <span class="fu">str_to_lower</span>(text))<span class="sc">|&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper) <span class="sc">|&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Word_count =</span> <span class="fu">sum</span>(<span class="fu">str_count</span>(text,<span class="st">"government"</span>) <span class="sc">+</span> </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">str_count</span>(text,<span class="st">"confederacy"</span>))) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Although counting the occurrence of the two words does not give any context to what direction the author intends to take the paper, the repetition of the words provides a hint.</p>
+<p><strong>Graphing Count of “Government” and “Confederacy”</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Country_FedPapers, <span class="fu">aes</span>(<span class="at">x =</span> paper, <span class="at">y =</span> Word_count)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Federalist Paper Number"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Word Count"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Number of times 'confederacy' or 'government' mentioned"</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FedPapers_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the graph, we can see a consistent call upon government and confederacy with the highest count being around paper 45 which describes the power of the government relative to state governments, so it is possible the constant mention of the two forms of government caused the spike.</p>
+<p><strong>Title Length per Paper</strong></p>
+<p>Another alteration to the data I will apply is separating the title into its generic FEDERALIST No.&nbsp;and its assigned title. From here I analyze the length of each title.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Neater_Fedpaper <span class="ot">&lt;-</span> FederalistPapers <span class="sc">|&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">solo_title =</span> <span class="fu">str_extract</span>(title,<span class="st">"(?&lt;=</span><span class="sc">\\</span><span class="st">. ).+"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">title_length =</span> <span class="fu">str_length</span>(<span class="fu">first</span>(solo_title)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Graph of Title Length vs Specific Word Count</strong></p>
+<p>Then will the length of the title tell anything about the wordiness of the author? In other words, will the length of the title predict the amount of times the words confederacy and government appear?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Joined_Fedpaper <span class="ot">&lt;-</span> <span class="fu">left_join</span>(Country_FedPapers, Neater_Fedpaper)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(paper)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(Joined_Fedpaper, <span class="fu">aes</span>( <span class="at">x =</span> title_length , <span class="at">y =</span> Word_count)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Length of Title"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count of government and confederacy"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Does title length predict utterances of government?"</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="FedPapers_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>There is no easily visible marked trend. A longer title does not relate to a longer string of confederacies and government mentions that may appear in longer papers.</p>
+<p><strong>Constitution and What Else?</strong></p>
+<p>In an attempt to contextualize what is referred to as the Constitution in the Federalist papers, the following code draws out the words following the word constitution.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>FederalistPapers <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">str_detect</span>(text, <span class="st">"(?i)constitution"</span>))<span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(paper)<span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">surr_const =</span> <span class="fu">str_c</span>(<span class="fu">unlist</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">str_extract_all</span>(text, <span class="st">"(?i)constitution</span><span class="sc">\\</span><span class="st">s+(</span><span class="sc">\\</span><span class="st">w+)"</span>)), <span class="at">collapse =</span> <span class="st">", "</span>))  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 77 × 2
+   paper surr_const                                                            
+   &lt;dbl&gt; &lt;chr&gt;                                                                 
+ 1     1 "Constitution for, CONSTITUTION TO, CONSTITUTION and, Constitution or"
+ 2     6 ""                                                                    
+ 3     7 ""                                                                    
+ 4     8 "constitution that"                                                   
+ 5     9 "constitution that"                                                   
+ 6    10 "Constitution forms"                                                  
+ 7    14 "Constitution From, Constitution are, Constitution is"                
+ 8    15 "constitution of"                                                     
+ 9    16 "Constitution which, constitution in"                                 
+10    17 ""                                                                    
+# ℹ 67 more rows</code></pre>
+</div>
+</div>
+<p>Althought the code does not give much context as the words following the mention of constitution are largely filler words, it does highlight the different instances of constitution. The capitalized Constitution is likely a direct reference to the U.S. Constitution. The completely capitalized CONSTITUTION is likely referenced in an address to the reader or some outstanding instance while the completely lowercase constitution is the general constitute of something.</p>
+<p><strong>Who Wrote the Most?</strong></p>
+<p>From a brief look at the authorship of each paper, it can be seen that Hamilton took authorship of most, but how many words did they write across their papers?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> FederalistPapers <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(author) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">total_words =</span> <span class="fu">sum</span>(<span class="fu">str_count</span>(text, <span class="st">"</span><span class="sc">\\</span><span class="st">S+"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  author   total_words
+  &lt;chr&gt;          &lt;int&gt;
+1 Hamilton      114076
+2 Jay             8513
+3 Madison        69377</code></pre>
+</div>
+</div>
+<p>Unsurprisingly, Hamilton wrote like he was running out of time and ended with 114,076 words across his many authored papers.</p>
+
+
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -176,6 +328,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

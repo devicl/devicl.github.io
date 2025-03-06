@@ -15,6 +15,8 @@ website:
           href: dataviz.html
         - text: "Groundhog Predictions"
           href: dataviz2.html
+        - text: "Federalist Papers Analysis"
+          href: FedPapers.qmd
 
 format:
   html:

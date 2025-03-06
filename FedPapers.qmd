@@ -1,0 +1,101 @@
+---
+title: "Federalist Papers Analysis"
+description: |
+  Analysis of character strings in the Federalist Papers data from TidyTuesday
+author: Devi Canseco
+date: March 05, 2025
+format: html
+---
+
+```{r, include=FALSE}
+library(tidyverse)
+library(FederalistPapers)
+```
+
+**Introduction**
+
+This is project 2 which seeks to work with string and character data. The data used comes from nicholasjhorton's GitHub repository which provides a data frame for the Federalist papers.
+
+**Establishing a Government**
+
+Since the purpose of the Federalist Papers is to defend the Constitution that establishes the U.S government branches, I proceeded to examine how many times this purpose is linked through mentions of the words "government". I provided an alternative "confederacy" due to its predecessor, the Articles of Confederation, as a name for government in reference to the United States.
+
+```{r}
+Country_FedPapers <- FederalistPapers |>
+  mutate(Country_FedPapers = str_to_lower(text))|>
+  group_by(paper) |>
+  summarise(Word_count = sum(str_count(text,"government") + 
+              str_count(text,"confederacy"))) 
+```
+
+Although counting the occurrence of the two words does not give any context to what direction the author intends to take the paper, the repetition of the words provides a hint.
+
+**Graphing Count of "Government" and "Confederacy"**
+
+```{r}
+ggplot(Country_FedPapers, aes(x = paper, y = Word_count)) +
+  geom_col() + 
+  labs(
+    x = "Federalist Paper Number",
+    y = "Word Count", 
+    title = "Number of times 'confederacy' or 'government' mentioned"
+  )
+```
+
+From the graph, we can see a consistent call upon government and confederacy with the highest count being around paper 45 which describes the power of the government relative to state governments, so it is possible the constant mention of the two forms of government caused the spike.
+
+**Title Length per Paper**
+
+Another alteration to the data I will apply is separating the title into its generic FEDERALIST No. and its assigned title. From here I analyze the length of each title.
+
+```{r}
+Neater_Fedpaper <- FederalistPapers |>
+  mutate(solo_title = str_extract(title,"(?<=\\. ).+")) |>
+  group_by(paper) |>
+  summarize(title_length = str_length(first(solo_title)))
+```
+
+**Graph of Title Length vs Specific Word Count**
+
+Then will the length of the title tell anything about the wordiness of the author? In other words, will the length of the title predict the amount of times the words confederacy and government appear?
+
+```{r}
+Joined_Fedpaper <- left_join(Country_FedPapers, Neater_Fedpaper)
+
+ggplot(Joined_Fedpaper, aes( x = title_length , y = Word_count)) +
+  geom_point() +
+  labs(
+    x = "Length of Title",
+    y = "Count of government and confederacy",
+    title = "Does title length predict utterances of government?"
+  )
+```
+
+There is no easily visible marked trend. A longer title does not relate to a longer string of confederacies and government mentions that may appear in longer papers.
+
+**Constitution and What Else?**
+
+In an attempt to contextualize what is referred to as the Constitution in the Federalist papers, the following code draws out the words following the word constitution.
+
+```{r}
+FederalistPapers |>
+  filter(str_detect(text, "(?i)constitution"))|>
+  group_by(paper)|>
+  summarize(surr_const = str_c(unlist(
+    str_extract_all(text, "(?i)constitution\\s+(\\w+)")), collapse = ", "))  
+
+```
+
+Althought the code does not give much context as the words following the mention of constitution are largely filler words, it does highlight the different instances of constitution. The capitalized Constitution is likely a direct reference to the U.S. Constitution. The completely capitalized CONSTITUTION is likely referenced in an address to the reader or some outstanding instance while the completely lowercase constitution is the general constitute of something.
+
+**Who Wrote the Most?**
+
+From a brief look at the authorship of each paper, it can be seen that Hamilton took authorship of most, but how many words did they write across their papers?
+
+```{r}
+ FederalistPapers |>
+  group_by(author) |>
+  summarize(total_words = sum(str_count(text, "\\S+")))
+```
+
+Unsurprisingly, Hamilton wrote like he was running out of time and ended with 114,076 words across his many authored papers.

@@ -1,7 +1,7 @@
 ---
 title: "Simpsons"
 description: |
-  Analysis of Super Mario Kart data from TidyTuesday
+  Analysis of Simpsons data from TidyTuesday
 author: Devi Canseco
 date: February 18, 2025
 format: html
