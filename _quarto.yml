@@ -17,6 +17,8 @@ website:
           href: dataviz2.html
         - text: "Federalist Papers Analysis"
           href: FedPapers.qmd
+        - text: "English Education"  
+          href: Riskprofile.qmd
 
 format:
   html:
