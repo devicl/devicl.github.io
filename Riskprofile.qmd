@@ -1,0 +1,62 @@
+---
+title: "English Education in Small Towns"
+description: |
+  Analysis of English Education data from TidyTuesday
+author: Devi Canseco
+date: April 4, 2025
+format: html
+---
+
+```{r}
+library(tidyverse)
+tuesdata <- tidytuesdayR::tt_load(2024, week = 4)
+
+english_education <- tuesdata$english_education
+```
+
+In this analysis, I will utilize the data from TidyTuesday 2024-01-23 to perform a permutation test. The goal of the test is to confirm the claims of the article in which the data was used to answer the question: Is there a significant difference in education scores between different-sized towns? The data is taken from the UK Office for National Statistics. At a glance at the data, there was a significantly higher number of data points for small towns. The second closest recorded number was that of medium towns so they were chosen as the closest fair comparison.
+
+Link to the data:
+
+<https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-01-23/readme.md>
+
+```{r}
+size_interest <- english_education |>
+  filter(size_flag == "Medium Towns"| size_flag =="Small Towns")
+head(size_interest)
+```
+
+```{r}
+permutation_test <- function(reps,data) {
+  data |>
+    select(size_flag, education_score)|>
+    mutate(edu_perm = sample(education_score, replace = FALSE)) |>
+    group_by(size_flag) |>
+    summarize(mean_score = mean(education_score, na.rm = TRUE), mean_perm = mean(edu_perm)) |>
+    summarize(mean_diff = abs(diff(mean_score)), mean_perm_diff = diff(mean_perm))
+  }
+
+set.seed(123)
+under_null <- map(1:10000, permutation_test, data = size_interest) |>
+  list_rbind()
+    
+
+```
+
+```{r}
+ggplot(under_null, aes(x = mean_perm_diff)) +
+  geom_histogram(binwidth = 0.1, color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean_diff, color = "red")) +
+  labs(title = "Distribution of Permutation Under Null",
+       x = "Difference in Mean Scores",
+       y = "Frequency") 
+```
+
+From the plot it can be seen that the line representing the observational measurement of education score differences is off-centered. There is a small number of occurrences of simulated under the null. This would mean that the observed difference is more extreme than data created randomly.
+
+```{r}
+under_null|>
+summarize(p_value = mean(mean_perm_diff > mean_diff))
+```
+
+After creating 10000 permutation simulations, the distribution under the null hypothesis falls on zero as there is no expected difference between the two groups. From the results of the p-value, if the significance level, as it usually is, is set to be 0.05, our p-value fall below this level. $\alpha$ \> 0.0139. This means that our data is significantly extreme and would probably not occur by chance.
