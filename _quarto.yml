@@ -19,6 +19,8 @@ website:
           href: FedPapers.qmd
         - text: "English Education"  
           href: Riskprofile.qmd
+        - text: "Ethical Analysis"
+          href: ethics.qmd
 
 format:
   html:
