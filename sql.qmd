@@ -1,0 +1,99 @@
+---
+title: "SQL"
+---
+
+```{r, include = FALSE}
+library(DBI)
+library(RMariaDB)
+library(ggplot2)
+
+con_traffic <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "traffic",
+  host = Sys.getenv("TRAFFIC_HOST"),
+  user = Sys.getenv("TRAFFIC_USER"),
+  password = Sys.getenv("TRAFFIC_PWD")
+)
+
+```
+
+Better drivers - Comparison of proportion of drivers issues a citation by the state patrol in CA vs FL
+
+```{r}
+dbListTables(con_traffic)
+```
+
+```{sql}
+#| connection: con_traffic
+#| output.var: "prop_table"
+
+SELECT
+    state,
+    COUNT(*) AS total_stops,
+    SUM(citations) AS citations,
+    ROUND(SUM(citations) / COUNT(*) * 100, 2) AS citation_rate_percent
+FROM (
+    SELECT
+        'CA' AS state,
+        s.citation_issued,
+        CASE WHEN s.citation_issued = TRUE THEN 1 ELSE 0 END AS citations
+    FROM ca_statewide_2023_01_26 s
+    WHERE s.citation_issued IS NOT NULL
+
+    UNION ALL
+
+    SELECT
+        'FL' AS state,
+        s.citation_issued,
+        CASE WHEN s.citation_issued = TRUE THEN 1 ELSE 0 END AS citations
+    FROM fl_statewide_2020_04_01 s
+    WHERE s.citation_issued IS NOT NULL
+) combined
+GROUP BY state
+ORDER BY citation_rate_percent DESC;
+```
+
+```{sql}
+#| connection: con_traffic
+#| output.var: "contr_table"
+SELECT
+    COUNT(*) AS total_searches,
+    SUM(CASE WHEN s.contraband_found = TRUE THEN 1 ELSE 0 END) AS searches_with_contraband,
+    ROUND(SUM(CASE WHEN s.contraband_found = TRUE THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) AS contraband_hit_rate_percent
+FROM
+    pa_philadelphia_2020_04_01 s
+WHERE
+    s.search_conducted = TRUE
+    AND s.contraband_found IS NOT NULL;
+```
+
+```{r}
+contr_table
+```
+
+```{r}
+ggplot(contr_table, aes(y = total_searches, fill = searches_with_contraband)) +
+  geom_bar( width = 0.6) +
+  labs(
+    title = "Searches vs. Contraband Found — Philadelphia, PA",
+    x = "",
+    y = "Number of Stops"
+  )
+```
+
+```{r}
+ggplot(prop_table, aes(x = state, y = citations)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Proportion of Drivers Issued Citations by State Patrol",
+    x = "State",
+    y = "Citation Rate"
+  ) +
+  scale_y_continuous(labels = scales::percent)
+```
+
+```{r}
+dbDisconnect(con_traffic)
+```
+
+Data Source: Stanford Open Policing Project. Pierson, E., Corbett-Davies, S., & Goel, S. (2020). “A large-scale analysis of racial disparities in police stops across the United States.” *Nature Human Behaviour*, 4(7), 736–745. <https://openpolicing.stanford.edu/>

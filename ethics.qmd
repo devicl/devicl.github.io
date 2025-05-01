@@ -14,7 +14,7 @@ Two articles:
 
 <!-- -->
 
--    Duhigg, C. (2012, February 16). *How companies learn your secrets*. *The New York Times Magazine*. <https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html>
+-   Duhigg, C. (2012, February 16). *How companies learn your secrets*. *The New York Times Magazine*. <https://www.nytimes.com/2012/02/19/magazine/shopping-habits.html>
 
 **Summary**
 
