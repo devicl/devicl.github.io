@@ -21,6 +21,8 @@ website:
           href: Riskprofile.qmd
         - text: "Ethical Analysis"
           href: ethics.qmd
+        - text: "SQL project"
+          href: sql.qmd
 
 format:
   html:
