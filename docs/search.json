@@ -2,16 +2,51 @@
   {
     "objectID": "webfix.html#groundhog-day-predictions",
     "href": "webfix.html#groundhog-day-predictions",
-    "title": "Webfix",
+    "title": "DS002R Projects Presentation",
     "section": "Groundhog Day Predictions",
     "text": "Groundhog Day Predictions\n\nData on New York Times headlines from RTextTools package\n\nDate, title, subject of headlines from 1996-2006\n\nCompared total NYT headlines mentions between Bill Clinton and George W. Bush during their consecutive terms (Clinton 1997-2000 and Bush 2001-2004)\nExamined word length of headlines across months, with and without punctuation"
   },
   {
     "objectID": "webfix.html#the-simpsonss-script",
     "href": "webfix.html#the-simpsonss-script",
-    "title": "Webfix",
+    "title": "DS002R Projects Presentation",
     "section": "The Simpsons’s Script",
-    "text": "The Simpsons’s Script\n\ncharacters with over 2000 cumulative word counts."
+    "text": "The Simpsons’s Script\n\n\nLooking at characters with over 2000 cumulative word counts.\nHow is line distribution decided based on a character’s role?"
+  },
+  {
+    "objectID": "webfix.html#character-word-count",
+    "href": "webfix.html#character-word-count",
+    "title": "DS002R Projects Presentation",
+    "section": "Character word count",
+    "text": "Character word count"
+  },
+  {
+    "objectID": "webfix.html#permutation",
+    "href": "webfix.html#permutation",
+    "title": "DS002R Projects Presentation",
+    "section": "Permutation’",
+    "text": "Permutation’"
+  },
+  {
+    "objectID": "webfix.html#p-value",
+    "href": "webfix.html#p-value",
+    "title": "DS002R Projects Presentation",
+    "section": "P-value",
+    "text": "P-value"
+  },
+  {
+    "objectID": "webfix.html#florida-vs-california",
+    "href": "webfix.html#florida-vs-california",
+    "title": "DS002R Projects Presentation",
+    "section": "Florida vs California",
+    "text": "Florida vs California\n\n."
+  },
+  {
+    "objectID": "webfix.html#proportion",
+    "href": "webfix.html#proportion",
+    "title": "DS002R Projects Presentation",
+    "section": "Proportion",
+    "text": "Proportion\n\n\n [1] \"ar_little_rock_2020_04_01\"      \"az_gilbert_2020_04_01\"         \n [3] \"az_mesa_2023_01_26\"             \"az_statewide_2020_04_01\"       \n [5] \"ca_anaheim_2020_04_01\"          \"ca_bakersfield_2020_04_01\"     \n [7] \"ca_long_beach_2020_04_01\"       \"ca_los_angeles_2020_04_01\"     \n [9] \"ca_oakland_2020_04_01\"          \"ca_san_bernardino_2020_04_01\"  \n[11] \"ca_san_diego_2020_04_01\"        \"ca_san_francisco_2020_04_01\"   \n[13] \"ca_san_jose_2020_04_01\"         \"ca_santa_ana_2020_04_01\"       \n[15] \"ca_statewide_2023_01_26\"        \"ca_stockton_2020_04_01\"        \n[17] \"co_aurora_2023_01_26\"           \"co_denver_2020_04_01\"          \n[19] \"co_statewide_2020_04_01\"        \"ct_hartford_2020_04_01\"        \n[21] \"ct_statewide_2020_04_01\"        \"fl_saint_petersburg_2020_04_01\"\n[23] \"fl_statewide_2020_04_01\"        \"fl_tampa_2020_04_01\"           \n[25] \"ga_statewide_2020_04_01\"        \"ia_statewide_2020_04_01\"       \n[27] \"id_idaho_falls_2020_04_01\"      \"il_chicago_2023_01_26\"         \n[29] \"il_statewide_2020_04_01\"        \"in_fort_wayne_2020_04_01\"      \n[31] \"ks_wichita_2023_01_26\"          \"ky_louisville_2023_01_26\"      \n[33] \"ky_owensboro_2020_04_01\"        \"la_new_orleans_2020_04_01\"     \n[35] \"ma_statewide_2020_04_01\"        \"md_baltimore_2020_04_01\"       \n[37] \"md_statewide_2020_04_01\"        \"mi_statewide_2020_04_01\"       \n[39] \"mn_saint_paul_2020_04_01\"       \"mo_statewide_2020_04_01\"       \n[41] \"ms_statewide_2020_04_01\"        \"mt_statewide_2023_01_26\"       \n[43] \"nc_charlotte_2020_04_01\"        \"nc_durham_2020_04_01\"          \n[45] \"nc_fayetteville_2020_04_01\"     \"nc_greensboro_2020_04_01\"      \n[47] \"nc_raleigh_2020_04_01\"          \"nc_statewide_2020_04_01\"       \n[49] \"nc_winston_salem_2020_04_01\"    \"nd_grand_forks_2020_04_01\"     \n[51] \"nd_statewide_2020_04_01\"        \"ne_statewide_2020_04_01\"       \n[53] \"nh_statewide_2020_04_01\"        \"nj_camden_2020_04_01\"          \n[55] \"nj_statewide_2020_04_01\"        \"nv_henderson_2020_04_01\"       \n[57] \"nv_statewide_2020_04_01\"        \"ny_albany_2020_04_01\"          \n[59] \"ny_statewide_2020_04_01\"        \"oh_cincinnati_2020_04_01\"      \n[61] \"oh_columbus_2020_04_01\"         \"oh_statewide_2020_04_01\"       \n[63] \"ok_oklahoma_city_2023_01_26\"    \"ok_tulsa_2020_04_01\"           \n[65] \"or_statewide_2020_04_01\"        \"pa_philadelphia_2020_04_01\"    \n[67] \"ri_statewide_2020_04_01\"        \"sc_statewide_2020_04_01\"       \n[69] \"sd_statewide_2020_04_01\"        \"tn_nashville_2020_04_01\"       \n[71] \"tn_statewide_2020_04_01\"        \"tx_arlington_2020_04_01\"       \n[73] \"tx_austin_2020_04_01\"           \"tx_garland_2020_04_01\"         \n[75] \"tx_houston_2023_01_26\"          \"tx_lubbock_2020_04_01\"         \n[77] \"tx_plano_2020_04_01\"            \"tx_san_antonio_2023_01_26\"     \n[79] \"tx_statewide_2020_04_01\"        \"va_statewide_2020_04_01\"       \n[81] \"vt_burlington_2023_01_26\"       \"vt_statewide_2020_04_01\"       \n[83] \"wa_seattle_2020_04_01\"          \"wa_statewide_2020_04_01\"       \n[85] \"wa_tacoma_2020_04_01\"           \"wi_madison_2023_01_26\"         \n[87] \"wi_statewide_2020_04_01\"        \"wy_statewide_2020_04_01\""
   },
   {
     "objectID": "Riskprofile.html",
@@ -32,7 +67,7 @@
     "href": "dataviz2.html",
     "title": "Groundhog",
     "section": "",
-    "text": "Introduction\nThis project draws its data from the GitHub repository TidyTuesday’s 2024-01-30 folder titled “Groundhog Predictions.” This data is originally from https://groundhog-day.com/. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada. That is to say, several groundhogs’ predictions are recorded every year.\n\nshadow_prediction  &lt;- predictions |&gt;\n  group_by(year) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\n\nggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +\n  geom_point()\n\n\n\n\n\n\n\n\nGraphing and Code\n\nid_prediction  &lt;- predictions |&gt;\n  group_by(id) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\n\nggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +\n  geom_col() +\n  labs(\n    title = \"Longer winter predictions per Ground Hog\",\n    x = \"Groundhog identification\",\n    y = \"Saw Shadow Count\"\n  )\n\n\n\n\n\n\n\nggplot(predictions, aes(x = year, fill = shadow)) +\n  geom_bar() +\n  labs(\n    title = \"Yearly Shadow Predictions\",\n    x = \"Year\",\n    y = \"Total Predictions\"\n  )\n\n\n\n\n\n\n\n\nAnalysis\nThe first graph isolates the total count of observed shadows by year. Similarly, the third graph reiterates this idea by presenting the count of all shadow predictions per year. From these graphs, it is obvious that there is a growing number of predictions by different groundhogs. The growth in groundhog day popularity is especially visible when we view the third graph in conjunction with the second graph showing the consistency and recency in groundhog count of predictions. In the second graph, we can see that earlier groundhogs have had a greater impact on the data for winter predictions."
+    "text": "Introduction\nThis project draws its data from the GitHub repository TidyTuesday’s 2024-01-30 folder titled “Groundhog Predictions.” This data is originally from https://groundhog-day.com/. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada. That is to say, several groundhogs’ predictions are recorded every year.\n\nshadow_prediction  &lt;- predictions |&gt;\n  group_by(year) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\n\nggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +\n  geom_point() +\n  theme_minimal()\n\n\n\n\n\n\n\n\nGraphing and Code\n\nid_prediction  &lt;- predictions |&gt;\n  group_by(id) |&gt;\n  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))\n\nggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +\n  geom_col() +\n  labs(\n    title = \"Longer winter predictions per Ground Hog\",\n    x = \"Groundhog identification\",\n    y = \"Saw Shadow Count\"\n  ) + theme_minimal()\n\n\n\n\n\n\n\nggplot(predictions, aes(x = year, fill = shadow)) +\n  geom_bar() +\n  labs(\n    title = \"Yearly Shadow Predictions\",\n    x = \"Year\",\n    y = \"Total Predictions\"\n  ) + theme_minimal()\n\n\n\n\n\n\n\n\nAnalysis\nThe first graph isolates the total count of observed shadows by year. Similarly, the third graph reiterates this idea by presenting the count of all shadow predictions per year. From these graphs, it is obvious that there is a growing number of predictions by different groundhogs. The growth in groundhog day popularity is especially visible when we view the third graph in conjunction with the second graph showing the consistency and recency in groundhog count of predictions. In the second graph, we can see that earlier groundhogs have had a greater impact on the data for winter predictions."
   },
   {
     "objectID": "about.html",
@@ -46,7 +81,7 @@
     "href": "dataviz.html",
     "title": "Simpsons’s Script",
     "section": "",
-    "text": "Introduction\nIn this project, I will use data from the TidyTuesday folder for February 2, 2025. The original data is from https://www.kaggle.com/datasets/prashant111/the-simpsons-dataset, which is a kraggle data set authored by Prashant Banerjee. This data is further scraped by other users. The data is split into four data frames of characters, episodes, locations, and script lines. I focused on script line count among the characters with the over 2000 cumulative word counts.\nGraph and Code\n\nknown_character &lt;- simpsons_script_lines |&gt;\n  group_by(raw_character_text) |&gt;\n  summarize(total_word_count = sum(word_count, na.rm = TRUE)) |&gt;\n  filter(total_word_count &gt; 2000)|&gt;\n  arrange(total_word_count)\n\n\n  ggplot(known_character, aes(y = reorder(raw_character_text, -total_word_count), x = total_word_count)) +\n  geom_col() +\n  labs(\n    title = \"Characters with the Highest Word Count\",\n    y = \"Characters by Name\",\n    x = \"Total Word Count\"\n  )\n\n\n\n\n\n\n\n\nAnalysis\nFor this data, we can see that the characters that have said over 2000 words are limited to 16 characters. Characters in the main cast naturally have more lines, but there is a large difference between the character with the highest word count (Homer) and the character with the second highest word count (Marge). This can be attributed to Homer being the protagonist. When we exclude the Simpsons family, Moe is the character with the most words said. There is a notable drop between Moe and Lisa Simpson, signaling the end of the main cast. Would an avid Simpsons fan consider this character’s word count surprising?"
+    "text": "Introduction\nIn this project, I will use data from the TidyTuesday folder for February 2, 2025. The original data is from https://www.kaggle.com/datasets/prashant111/the-simpsons-dataset, which is a kraggle data set authored by Prashant Banerjee. This data is further scraped by other users. The data is split into four data frames of characters, episodes, locations, and script lines. I focused on script line count among the characters with the over 2000 cumulative word counts.\nGraph and Code\n\nknown_character &lt;- simpsons_script_lines |&gt;\n  group_by(raw_character_text) |&gt;\n  summarize(total_word_count = sum(word_count, na.rm = TRUE)) |&gt;\n  filter(total_word_count &gt; 2000)|&gt;\n  arrange(total_word_count)\n\n\n  ggplot(known_character, aes(y = reorder(raw_character_text, -total_word_count), x = total_word_count)) +\n  geom_col() +\n  labs(\n    title = \"Characters with the Highest Word Count\",\n    y = \"Characters by Name\",\n    x = \"Total Word Count\"\n  ) + theme_minimal()\n\n\n\n\n\n\n\n\nAnalysis\nFor this data, we can see that the characters that have said over 2000 words are limited to 16 characters. Characters in the main cast naturally have more lines, but there is a large difference between the character with the highest word count (Homer) and the character with the second highest word count (Marge). This can be attributed to Homer being the protagonist. When we exclude the Simpsons family, Moe is the character with the most words said. There is a notable drop between Moe and Lisa Simpson, signaling the end of the main cast. Would an avid Simpsons fan consider this character’s word count surprising?"
   },
   {
     "objectID": "ethics.html",
@@ -60,14 +95,21 @@
     "href": "index.html",
     "title": "Devi Canseco Lopez",
     "section": "",
-    "text": "Devi is a rising Junior at Pomona College looking to graduate with a degree in Cognitive Science and a double minor in Latin American Studies and Data Science. She is a member of Pomona Farm Club, Pomona College Latinx Alliance, and Rooftop Garden. In her free time, she enjoys doing outdoor activities, drawing, and playing video games.\n\n\nPomona College | Claremont, CA\n## Skills\nR, Git, Python, Javascript, HTML/CSS, Excel"
+    "text": "Devi is a rising Junior at Pomona College looking to graduate with a degree in Cognitive Science and a double minor in Latin American Studies and Data Science. She is a member of Pomona Farm Club, Pomona College Latinx Alliance, and Rooftop Garden. In her free time, she enjoys doing outdoor activities, drawing, and playing video games.\n\n\nPomona College | Claremont, CA\n\n\n\nR, Git, Python, Javascript, HTML/CSS, Excel"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Devi Canseco Lopez",
     "section": "",
-    "text": "Pomona College | Claremont, CA\n## Skills\nR, Git, Python, Javascript, HTML/CSS, Excel"
+    "text": "Pomona College | Claremont, CA"
+  },
+  {
+    "objectID": "index.html#skills",
+    "href": "index.html#skills",
+    "title": "Devi Canseco Lopez",
+    "section": "",
+    "text": "R, Git, Python, Javascript, HTML/CSS, Excel"
   },
   {
     "objectID": "sql.html",

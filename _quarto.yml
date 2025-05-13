@@ -22,7 +22,9 @@ website:
         - text: "Ethical Analysis"
           href: ethics.qmd
         - text: "SQL project"
-          href: sql.qmd
+          href: sql.qm
+      - text: "DS002R Projects Presentation"
+        href: webfix.qmd
 
 format:
   html:

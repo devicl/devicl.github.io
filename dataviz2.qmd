@@ -27,7 +27,8 @@ shadow_prediction  <- predictions |>
   summarize(total_shadow_count = sum(shadow, na.rm = TRUE))
 
 ggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +
-  geom_point()
+  geom_point() +
+  theme_minimal()
 
 
 ```
@@ -45,7 +46,7 @@ ggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +
     title = "Longer winter predictions per Ground Hog",
     x = "Groundhog identification",
     y = "Saw Shadow Count"
-  )
+  ) + theme_minimal()
 
 ggplot(predictions, aes(x = year, fill = shadow)) +
   geom_bar() +
@@ -53,7 +54,7 @@ ggplot(predictions, aes(x = year, fill = shadow)) +
     title = "Yearly Shadow Predictions",
     x = "Year",
     y = "Total Predictions"
-  )
+  ) + theme_minimal()
 ```
 
 **Analysis**

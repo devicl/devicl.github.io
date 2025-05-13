@@ -7,7 +7,7 @@ about:
   image-shape: rectangle
   image-width: 17em
   links:
-    - text: LinkedIn
+    - icon: LinkedIn
       href: https://www.linkedin.com/in/devi-canseco-lopez-7a089132a 
     - icon: github
       href: https://github.com/devicl
@@ -24,7 +24,7 @@ Devi is a rising Junior at Pomona College looking to graduate with a degree in C
 
 Pomona College \| Claremont, CA
 
-\## Skills
+## Skills
 
 R, Git, Python, Javascript, HTML/CSS, Excel
 :::

@@ -41,7 +41,7 @@ known_character <- simpsons_script_lines |>
     title = "Characters with the Highest Word Count",
     y = "Characters by Name",
     x = "Total Word Count"
-  )
+  ) + theme_minimal()
 
 ```
 

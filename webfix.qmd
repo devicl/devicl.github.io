@@ -1,5 +1,5 @@
 ---
-title: "Webfix"
+title: "DS002R Projects Presentation"
 author: "Devi Canseco"
 subtitle: "May 13, 2025"
 format:
@@ -25,8 +25,138 @@ execute:
 
 ## The Simpsons's Script
 
--   characters with over 2000 cumulative word counts.
+-   
+
+-   Looking at characters with over 2000 cumulative word counts.
+
+-   How is line distribution decided based on a character's role?
+
+## Character word count
+
+```{r, echo=FALSE}
+tuesdata <- tidytuesdayR::tt_load('2025-02-04')
+
+simpsons_characters <- tuesdata$simpsons_characters
+simpsons_episodes <- tuesdata$simpsons_episodes
+simpsons_locations <- tuesdata$simpsons_locations
+simpsons_script_lines <- tuesdata$simpsons_script_lines
+
+library(tidyverse)
+
+known_character <- simpsons_script_lines |>
+  group_by(raw_character_text) |>
+  summarize(total_word_count = sum(word_count, na.rm = TRUE)) |>
+  filter(total_word_count > 2000)|>
+  arrange(total_word_count)
+
+ggplot(known_character, aes(y = reorder(raw_character_text, -total_word_count), x = total_word_count)) +
+  geom_col() +
+  labs(
+    title = "Characters with the Highest Word Count",
+    y = "Characters by Name",
+    x = "Total Word Count"
+  ) + theme_minimal()
+```
 
 # Risk Profile
 
+-   Something
+
+## Permutation'
+
+```{r, echo=FALSE}
+tuesdata <- tidytuesdayR::tt_load(2024, week = 4)
+english_education <- tuesdata$english_education
+
+size_interest <- english_education |>
+  filter(size_flag == "Medium Towns"| size_flag =="Small Towns", na.rm = TRUE)
+
+permutation_test <- function(reps,data) {
+  data |>
+    select(size_flag, education_score)|>
+    mutate(edu_perm = sample(education_score, replace = FALSE)) |>
+    group_by(size_flag) |>
+    summarize(mean_score = mean(education_score, na.rm = TRUE), mean_perm = mean(edu_perm)) |>
+    summarize(mean_diff = abs(diff(mean_score)), mean_perm_diff = diff(mean_perm))
+}
+
+set.seed(123)
+under_null <- map(1:10000, permutation_test, data = size_interest) |>
+  list_rbind()
+
+ggplot(under_null, aes(x = mean_perm_diff)) +
+  geom_histogram(binwidth = 0.1, color = "black", alpha = 0.7) +
+  geom_vline(aes(xintercept = mean_diff, color = "red")) +
+  labs(title = "Distribution of Permutation Under Null",
+       x = "Difference in Mean Scores",
+       y = "Frequency") 
+```
+
+## P-value
+
+-   
+
 # SQL Drivers
+
+## Florida vs California
+
+-   .
+
+## Proportion
+
+```{r, echo=FALSE}
+
+ library(DBI)
+library(RMariaDB)
+library(ggplot2)
+library(tidyverse)
+
+con_traffic <- DBI::dbConnect(
+  RMariaDB::MariaDB(),
+  dbname = "traffic",
+  host = Sys.getenv("TRAFFIC_HOST"),
+  user = Sys.getenv("TRAFFIC_USER"),
+  password = Sys.getenv("TRAFFIC_PWD")
+)
+
+DBI::dbListTables(con_traffic)
+
+
+```
+
+```{sql, echo=FALSE}
+#| connection: con_traffic
+#| output.var: "prop_table"
+
+SELECT
+    state,
+    COUNT(*) AS total_stops,
+    SUM(citation_issued) AS citations,
+    ROUND(SUM(citation_issued) / COUNT(*), 2) AS citation_rate
+FROM (
+    SELECT
+        'CA' AS state,
+         citation_issued
+    FROM ca_statewide_2023_01_26
+
+    UNION ALL
+
+    SELECT
+        'FL' AS state,
+        citation_issued
+    FROM fl_statewide_2020_04_01
+) combined
+GROUP BY state
+ORDER BY citation_rate DESC;
+```
+
+```{r, echo=FALSE}
+ggplot(prop_table, aes(x = state, y = citation_rate)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Proportion of Drivers Issued Citations by State Patrol",
+    x = "State",
+    y = "Citation Rate"
+  ) 
+DBI::dbDisconnect(con_traffic)
+```
