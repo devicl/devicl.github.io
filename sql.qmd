@@ -1,5 +1,11 @@
 ---
 title: "SQL"
+description: |
+  Using SQL to analyze police traffic stops
+  
+author: Devi Canseco
+date: April 15, 2025
+format: html
 ---
 
 ```{r, include = FALSE}

@@ -7,24 +7,29 @@ date: April 4, 2025
 format: html
 ---
 
-```{r}
+```{r, inlcude = FALSE}
 library(tidyverse)
 tuesdata <- tidytuesdayR::tt_load(2024, week = 4)
 
 english_education <- tuesdata$english_education
 ```
 
-In this analysis, I will utilize the data from TidyTuesday 2024-01-23 to perform a permutation test. The goal of the test is to confirm the claims of the article in which the data was used to answer the question: Is there a significant difference in education scores between different-sized towns? The data is taken from the UK Office for National Statistics. At a glance at the data, there was a significantly higher number of data points for small towns. The second closest recorded number was that of medium towns so they were chosen as the closest fair comparison.
+In this analysis, I will utilize the data from TidyTuesday 2024-01-23 to perform a permutation test. The goal of the test is to confirm the claims of the article in which the data was used to answer the question: Is there a significant difference in education scores between different-sized towns? The data is taken from the UK Office for National Statistics.
 
 Link to the data:
 
 <https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-01-23/readme.md>
 
+<https://www.ons.gov.uk/>
+
 ```{r}
 size_interest <- english_education |>
-  filter(size_flag == "Medium Towns"| size_flag =="Small Towns")
-head(size_interest)
+  filter(size_flag == "Medium Towns"| size_flag =="Small Towns", na.rm = TRUE)
 ```
+
+The selected variable
+
+**Single permutation**
 
 ```{r}
 permutation_test <- function(reps,data) {
@@ -36,12 +41,17 @@ permutation_test <- function(reps,data) {
     summarize(mean_diff = abs(diff(mean_score)), mean_perm_diff = diff(mean_perm))
   }
 
+```
+
+**Repeated simulated trials**
+
+```{r}
 set.seed(123)
 under_null <- map(1:10000, permutation_test, data = size_interest) |>
   list_rbind()
-    
-
 ```
+
+**Plot distribution**
 
 ```{r}
 ggplot(under_null, aes(x = mean_perm_diff)) +

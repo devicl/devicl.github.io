@@ -19,16 +19,15 @@ library(tidyverse)
 
 **Introduction**
 
-This project draws its data from the GitHub repository TidyTuesday's 2024-01-30 folder titled "Groundhog Predictions". This data is originally from <https://groundhog-day.com/>. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada.
+This project draws its data from the GitHub repository TidyTuesday's 2024-01-30 folder titled "Groundhog Predictions." This data is originally from https://groundhog-day.com/. This data puts together the predictions of groundhogs for 6 more weeks of winter or the coming of spring across the US and Canada. That is to say, several groundhogs' predictions are recorded every year.
 
 ```{r}
 shadow_prediction  <- predictions |>
   group_by(year) |>
   summarize(total_shadow_count = sum(shadow, na.rm = TRUE))
-shadow_prediction
 
 ggplot(shadow_prediction, aes(x = year, y = total_shadow_count)) +
-  geom_col()
+  geom_point()
 
 
 ```

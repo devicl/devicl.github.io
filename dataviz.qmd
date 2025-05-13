@@ -1,5 +1,5 @@
 ---
-title: "Simpsons"
+title: "Simpsons's Script"
 description: |
   Analysis of Simpsons data from TidyTuesday
 author: Devi Canseco
@@ -27,23 +27,24 @@ library(tidyverse)
 
 ```{r}
 known_character <- simpsons_script_lines |>
-  group_by(character_id) |>
+  group_by(raw_character_text) |>
   summarize(total_word_count = sum(word_count, na.rm = TRUE)) |>
-  filter(total_word_count > 2000)
-known_character
+  filter(total_word_count > 2000)|>
+  arrange(total_word_count)
 
-known_character|>
-  ggplot(aes(x = character_id, y = total_word_count)) +
-  geom_point() +
+```
+
+```{r}
+  ggplot(known_character, aes(y = reorder(raw_character_text, -total_word_count), x = total_word_count)) +
+  geom_col() +
   labs(
     title = "Characters with the Highest Word Count",
-    x = "Character Identification",
-    y = "Total Word Count"
+    y = "Characters by Name",
+    x = "Total Word Count"
   )
 
-  
 ```
 
 **Analysis**
 
-For this data, we can see that the characters that have said over 2000 words is limited to 16 characters. Characters that appear earlier in the character id line seem to be prominent to appear as prolific characters. The next step in this data is to identify a match between character id to character name across data frames to better understand which characters are favored for lines. If we were to exclude the main Simpson family, which characters would receive the most attention?
+For this data, we can see that the characters that have said over 2000 words are limited to 16 characters. Characters in the main cast naturally have more lines, but there is a large difference between the character with the highest word count (Homer) and the character with the second highest word count (Marge). This can be attributed to Homer being the protagonist. When we exclude the Simpsons family, Moe is the character with the most words said. There is a notable drop between Moe and Lisa Simpson, signaling the end of the main cast. Would an avid Simpsons fan consider this character's word count surprising?

@@ -3,16 +3,28 @@ title: "Devi Canseco Lopez"
 image: DSC_0312.JPG
 toc: false
 about: 
-  template: solana
+  template: trestles
   image-shape: rectangle
   image-width: 17em
   links:
     - text: LinkedIn
       href: https://www.linkedin.com/in/devi-canseco-lopez-7a089132a 
-    - text: GitHub
+    - icon: github
       href: https://github.com/devicl
     - text: Email
       href: ddcx2023@mymail.pomona.edu
     - text: Website Repository
       href: https://github.com/devicl/devicl.github.io
 ---
+
+::: {#hero-heading}
+Devi is a rising Junior at Pomona College looking to graduate with a degree in Cognitive Science and a double minor in Latin American Studies and Data Science. She is a member of Pomona Farm Club, Pomona College Latinx Alliance, and Rooftop Garden. In her free time, she enjoys doing outdoor activities, drawing, and playing video games.
+
+## Education
+
+Pomona College \| Claremont, CA
+
+\## Skills
+
+R, Git, Python, Javascript, HTML/CSS, Excel
+:::

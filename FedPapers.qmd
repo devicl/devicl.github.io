@@ -14,7 +14,7 @@ library(FederalistPapers)
 
 **Introduction**
 
-This is project 2 which seeks to work with string and character data. The data used comes from nicholasjhorton's GitHub repository which provides a data frame for the Federalist papers.
+This is project 2, which seeks to work with string and character data. The data used comes from nicholasjhorton's GitHub repository, which provides a data frame for the Federalist Papers. The text files are taken from Project Gutenberg. The data can be found here: <https://github.com/nicholasjhorton/FederalistPapers/> .
 
 **Establishing a Government**
 
@@ -26,6 +26,7 @@ Country_FedPapers <- FederalistPapers |>
   group_by(paper) |>
   summarise(Word_count = sum(str_count(text,"government") + 
               str_count(text,"confederacy"))) 
+head(Country_FedPapers)
 ```
 
 Although counting the occurrence of the two words does not give any context to what direction the author intends to take the paper, the repetition of the words provides a hint.
@@ -42,7 +43,7 @@ ggplot(Country_FedPapers, aes(x = paper, y = Word_count)) +
   )
 ```
 
-From the graph, we can see a consistent call upon government and confederacy with the highest count being around paper 45 which describes the power of the government relative to state governments, so it is possible the constant mention of the two forms of government caused the spike.
+From the graph, we can see a consistent call upon government and confederacy with the highest count being paper 46 which describes the power of the government relative to state governments, so it is possible the constant mention of the two forms of government caused the spike.
 
 **Title Length per Paper**
 
@@ -60,10 +61,11 @@ Neater_Fedpaper <- FederalistPapers |>
 Then will the length of the title tell anything about the wordiness of the author? In other words, will the length of the title predict the amount of times the words confederacy and government appear?
 
 ```{r}
-Joined_Fedpaper <- left_join(Country_FedPapers, Neater_Fedpaper)
+Joined_Fedpaper <- left_join(Country_FedPapers, Neater_Fedpaper, by = "paper")
 
 ggplot(Joined_Fedpaper, aes( x = title_length , y = Word_count)) +
   geom_point() +
+  geom_smooth() +
   labs(
     x = "Length of Title",
     y = "Count of government and confederacy",

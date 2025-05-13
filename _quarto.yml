@@ -26,7 +26,9 @@ website:
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: sandstone
+      dark: solar
     css: styles.css
     toc: true
     page-layout: full
