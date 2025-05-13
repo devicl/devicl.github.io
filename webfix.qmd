@@ -25,7 +25,7 @@ execute:
 
 ## The Simpsons's Script
 
--   
+-   TidyTuesday folder for February 2, 2025
 
 -   Looking at characters with over 2000 cumulative word counts.
 
@@ -58,11 +58,21 @@ ggplot(known_character, aes(y = reorder(raw_character_text, -total_word_count), 
   ) + theme_minimal()
 ```
 
+## Conclusions
+
+-   Main character, main cast, popular side characters
+
+-   Would the results be surprising to a fan? Can it be used to gain insight into popularity?
+
 # Risk Profile
 
--   Something
+-   TidyTuesday January 23, 2024
 
-## Permutation'
+-   Comparing education scores in medium-sized vs small-sized towns
+
+-   Is there a significant difference in education scores between different-sized towns?
+
+## Repeated Permutation
 
 ```{r, echo=FALSE}
 tuesdata <- tidytuesdayR::tt_load(2024, week = 4)
@@ -89,10 +99,13 @@ ggplot(under_null, aes(x = mean_perm_diff)) +
   geom_vline(aes(xintercept = mean_diff, color = "red")) +
   labs(title = "Distribution of Permutation Under Null",
        x = "Difference in Mean Scores",
-       y = "Frequency") 
+       y = "Frequency") +
+  theme_minimal()
 ```
 
-## P-value
+## Conclusions
+
+-   P-value =
 
 -   
 
@@ -100,7 +113,11 @@ ggplot(under_null, aes(x = mean_perm_diff)) +
 
 ## Florida vs California
 
--   .
+-   Stanford Open Policing Project
+
+-   Comparing Florida's and California's proportion of total citations issued per total stops.
+
+-   Which state has better drivers?
 
 ## Proportion
 
@@ -118,9 +135,6 @@ con_traffic <- DBI::dbConnect(
   user = Sys.getenv("TRAFFIC_USER"),
   password = Sys.getenv("TRAFFIC_PWD")
 )
-
-DBI::dbListTables(con_traffic)
-
 
 ```
 
@@ -160,3 +174,9 @@ ggplot(prop_table, aes(x = state, y = citation_rate)) +
   ) 
 DBI::dbDisconnect(con_traffic)
 ```
+
+## Conclusions
+
+-   Not a determinant of good drivers, but fun speculation of the causes for the difference.
+
+-   Skill of the drivers or police attitude?

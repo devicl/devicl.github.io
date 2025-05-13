@@ -11,7 +11,7 @@
     "href": "webfix.html#the-simpsonss-script",
     "title": "DS002R Projects Presentation",
     "section": "The Simpsons’s Script",
-    "text": "The Simpsons’s Script\n\n\nLooking at characters with over 2000 cumulative word counts.\nHow is line distribution decided based on a character’s role?"
+    "text": "The Simpsons’s Script\n\nTidyTuesday folder for February 2, 2025\nLooking at characters with over 2000 cumulative word counts.\nHow is line distribution decided based on a character’s role?"
   },
   {
     "objectID": "webfix.html#character-word-count",
@@ -21,32 +21,46 @@
     "text": "Character word count"
   },
   {
-    "objectID": "webfix.html#permutation",
-    "href": "webfix.html#permutation",
+    "objectID": "webfix.html#conclusions",
+    "href": "webfix.html#conclusions",
     "title": "DS002R Projects Presentation",
-    "section": "Permutation’",
-    "text": "Permutation’"
+    "section": "Conclusions",
+    "text": "Conclusions\n\nMain character, main cast, popular side characters\nWould the results be surprising to a fan? Can it be used to gain insight into popularity?"
   },
   {
-    "objectID": "webfix.html#p-value",
-    "href": "webfix.html#p-value",
+    "objectID": "webfix.html#repeated-permutation",
+    "href": "webfix.html#repeated-permutation",
     "title": "DS002R Projects Presentation",
-    "section": "P-value",
-    "text": "P-value"
+    "section": "Repeated Permutation",
+    "text": "Repeated Permutation"
+  },
+  {
+    "objectID": "webfix.html#conclusions-1",
+    "href": "webfix.html#conclusions-1",
+    "title": "DS002R Projects Presentation",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nP-value ="
   },
   {
     "objectID": "webfix.html#florida-vs-california",
     "href": "webfix.html#florida-vs-california",
     "title": "DS002R Projects Presentation",
     "section": "Florida vs California",
-    "text": "Florida vs California\n\n."
+    "text": "Florida vs California\n\nStanford Open Policing Project\nComparing Florida’s and California’s proportion of total citations issued per total stops.\nWhich state has better drivers?"
   },
   {
     "objectID": "webfix.html#proportion",
     "href": "webfix.html#proportion",
     "title": "DS002R Projects Presentation",
     "section": "Proportion",
-    "text": "Proportion\n\n\n [1] \"ar_little_rock_2020_04_01\"      \"az_gilbert_2020_04_01\"         \n [3] \"az_mesa_2023_01_26\"             \"az_statewide_2020_04_01\"       \n [5] \"ca_anaheim_2020_04_01\"          \"ca_bakersfield_2020_04_01\"     \n [7] \"ca_long_beach_2020_04_01\"       \"ca_los_angeles_2020_04_01\"     \n [9] \"ca_oakland_2020_04_01\"          \"ca_san_bernardino_2020_04_01\"  \n[11] \"ca_san_diego_2020_04_01\"        \"ca_san_francisco_2020_04_01\"   \n[13] \"ca_san_jose_2020_04_01\"         \"ca_santa_ana_2020_04_01\"       \n[15] \"ca_statewide_2023_01_26\"        \"ca_stockton_2020_04_01\"        \n[17] \"co_aurora_2023_01_26\"           \"co_denver_2020_04_01\"          \n[19] \"co_statewide_2020_04_01\"        \"ct_hartford_2020_04_01\"        \n[21] \"ct_statewide_2020_04_01\"        \"fl_saint_petersburg_2020_04_01\"\n[23] \"fl_statewide_2020_04_01\"        \"fl_tampa_2020_04_01\"           \n[25] \"ga_statewide_2020_04_01\"        \"ia_statewide_2020_04_01\"       \n[27] \"id_idaho_falls_2020_04_01\"      \"il_chicago_2023_01_26\"         \n[29] \"il_statewide_2020_04_01\"        \"in_fort_wayne_2020_04_01\"      \n[31] \"ks_wichita_2023_01_26\"          \"ky_louisville_2023_01_26\"      \n[33] \"ky_owensboro_2020_04_01\"        \"la_new_orleans_2020_04_01\"     \n[35] \"ma_statewide_2020_04_01\"        \"md_baltimore_2020_04_01\"       \n[37] \"md_statewide_2020_04_01\"        \"mi_statewide_2020_04_01\"       \n[39] \"mn_saint_paul_2020_04_01\"       \"mo_statewide_2020_04_01\"       \n[41] \"ms_statewide_2020_04_01\"        \"mt_statewide_2023_01_26\"       \n[43] \"nc_charlotte_2020_04_01\"        \"nc_durham_2020_04_01\"          \n[45] \"nc_fayetteville_2020_04_01\"     \"nc_greensboro_2020_04_01\"      \n[47] \"nc_raleigh_2020_04_01\"          \"nc_statewide_2020_04_01\"       \n[49] \"nc_winston_salem_2020_04_01\"    \"nd_grand_forks_2020_04_01\"     \n[51] \"nd_statewide_2020_04_01\"        \"ne_statewide_2020_04_01\"       \n[53] \"nh_statewide_2020_04_01\"        \"nj_camden_2020_04_01\"          \n[55] \"nj_statewide_2020_04_01\"        \"nv_henderson_2020_04_01\"       \n[57] \"nv_statewide_2020_04_01\"        \"ny_albany_2020_04_01\"          \n[59] \"ny_statewide_2020_04_01\"        \"oh_cincinnati_2020_04_01\"      \n[61] \"oh_columbus_2020_04_01\"         \"oh_statewide_2020_04_01\"       \n[63] \"ok_oklahoma_city_2023_01_26\"    \"ok_tulsa_2020_04_01\"           \n[65] \"or_statewide_2020_04_01\"        \"pa_philadelphia_2020_04_01\"    \n[67] \"ri_statewide_2020_04_01\"        \"sc_statewide_2020_04_01\"       \n[69] \"sd_statewide_2020_04_01\"        \"tn_nashville_2020_04_01\"       \n[71] \"tn_statewide_2020_04_01\"        \"tx_arlington_2020_04_01\"       \n[73] \"tx_austin_2020_04_01\"           \"tx_garland_2020_04_01\"         \n[75] \"tx_houston_2023_01_26\"          \"tx_lubbock_2020_04_01\"         \n[77] \"tx_plano_2020_04_01\"            \"tx_san_antonio_2023_01_26\"     \n[79] \"tx_statewide_2020_04_01\"        \"va_statewide_2020_04_01\"       \n[81] \"vt_burlington_2023_01_26\"       \"vt_statewide_2020_04_01\"       \n[83] \"wa_seattle_2020_04_01\"          \"wa_statewide_2020_04_01\"       \n[85] \"wa_tacoma_2020_04_01\"           \"wi_madison_2023_01_26\"         \n[87] \"wi_statewide_2020_04_01\"        \"wy_statewide_2020_04_01\""
+    "text": "Proportion"
+  },
+  {
+    "objectID": "webfix.html#conclusions-2",
+    "href": "webfix.html#conclusions-2",
+    "title": "DS002R Projects Presentation",
+    "section": "Conclusions",
+    "text": "Conclusions\n\nNot a determinant of good drivers, but fun speculation of the causes for the difference.\nSkill of the drivers or police attitude?"
   },
   {
     "objectID": "Riskprofile.html",
