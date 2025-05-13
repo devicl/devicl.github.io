@@ -12,6 +12,7 @@ format: html
 library(DBI)
 library(RMariaDB)
 library(ggplot2)
+library(tidyverse)
 
 con_traffic <- DBI::dbConnect(
   RMariaDB::MariaDB(),
@@ -21,6 +22,7 @@ con_traffic <- DBI::dbConnect(
   password = Sys.getenv("TRAFFIC_PWD")
 )
 
+DBI::dbListTables(con_traffic)
 ```
 
 The data for this analysis comes from the Stanford Open Policing Project, published in Pierson et al. (2020). Which can be found in <https://openpolicing.stanford.edu/data/>. In this project, I want to compare reasonable driving stops for drivers across states. First, I will compare drivers from California and Florida with the tentative question: Which state has better drivers? To answer this question, I will find and compare the proportion of stops that resulted in a citation for each state. On a second analysis, I will utilize Philadelphia's data frame to find that searches provided resulted in a reasonable cause when performed. This follows the question: Did they have the right suspicion? I will extract the number of searches that found contraband and compare it to the total number of searches conducted.
@@ -36,29 +38,33 @@ In this analysis, the statewide reports of LA and FL are used to form a comparis
 SELECT
     state,
     COUNT(*) AS total_stops,
-    SUM(citations) AS citations,
-    ROUND(SUM(citations) / COUNT(*) * 100, 2) AS citation_rate_percent
+    SUM(citation_issued) AS citations,
+    ROUND(SUM(citation_issued) / COUNT(*), 2) AS citation_rate
 FROM (
     SELECT
         'CA' AS state,
-        CASE WHEN s.citation_issued = TRUE THEN 1 ELSE 0 END AS citations
-    FROM ca_statewide_2023_01_26 s
-    WHERE s.citation_issued IS NOT NULL
+         citation_issued
+    FROM ca_statewide_2023_01_26
 
     UNION ALL
 
     SELECT
         'FL' AS state,
-        CASE WHEN s.citation_issued = TRUE THEN 1 ELSE 0 END AS citations
-    FROM fl_statewide_2020_04_01 s
-    WHERE s.citation_issued IS NOT NULL
+        citation_issued
+    FROM fl_statewide_2020_04_01
 ) combined
 GROUP BY state
-ORDER BY citation_rate_percent DESC;
+ORDER BY citation_rate DESC;
 ```
 
 ```{r}
-ggplot(prop_table, aes(x = state, y = citations)) +
+head(prop_table)
+```
+
+The table shows numerically how many stops and how many of those stops resulted in citations.
+
+```{r}
+ggplot(prop_table, aes(x = state, y = citation_rate)) +
   geom_bar(stat = "identity") +
   labs(
     title = "Proportion of Drivers Issued Citations by State Patrol",
@@ -67,22 +73,24 @@ ggplot(prop_table, aes(x = state, y = citations)) +
   ) 
 ```
 
+From the graph, it can be seen that there is a large difference between the proportion of drivers who were stopped AND received a citation in California and Florida. While no conclusions can be drawn from this snippet of data, it can be speculated that perhaps Californian drivers are better drivers and did not commit violations that guaranteed a citation, or it could also propose the idea that traffic officers are more lenient to driving mistakes.
+
 **Evidence Found**
 
-In this analysis the data is taken from the Philadelphia, PA table. It seeks to find if searches resulted in finding evidence for a suspected holding of contraband.
+In this analysis, the data is taken from the Philadelphia, PA table. It seeks to find if searches resulted in finding evidence for a suspected holding of contraband.
 
 ```{sql}
 #| connection: con_traffic
 #| output.var: "contr_table"
 SELECT
     COUNT(*) AS total_searches,
-    SUM(CASE WHEN s.contraband_found = TRUE THEN 1 ELSE 0 END) AS searches_with_contraband,
-    ROUND(SUM(CASE WHEN s.contraband_found = TRUE THEN 1 ELSE 0 END) / COUNT(*) * 100, 2) AS contraband_hit_rate_percent
+    ROUND(SUM(CASE WHEN contraband_found = TRUE THEN 1 ELSE 0 END)) AS searches_with_contraband,
+    ROUND(SUM(CASE WHEN contraband_found = TRUE THEN 1 ELSE 0 END) / COUNT(*), 2) AS contraband_hit_rate 
 FROM
-    pa_philadelphia_2020_04_01 s
+    pa_philadelphia_2020_04_01
 WHERE
-    s.search_conducted = TRUE
-    AND s.contraband_found IS NOT NULL;
+    search_conducted = TRUE
+    AND contraband_found IS NOT NULL;
 ```
 
 ```{r}
@@ -90,13 +98,33 @@ contr_table
 ```
 
 ```{r}
-ggplot(contr_table, aes(y = total_searches, fill = searches_with_contraband)) +
-  geom_bar() +
-  labs(
-    title = "Searches vs. Contraband Found — Philadelphia, PA",
-    x = "",
-    y = "Number of Stops"
+search_table <- contr_table |>
+  mutate(searches_without_contraband = total_searches - searches_with_contraband)|>
+  mutate(contraband_miss_rate = 100 - contraband_hit_rate)
+
+
+search_table <- contr_table |>
+  mutate(
+    searches_without_contraband = total_searches - searches_with_contraband
+  ) |>
+  transmute(
+    `Contraband Found` = as.numeric(searches_with_contraband),
+    `No Contraband Found` = as.numeric(searches_without_contraband)
+  ) |>
+  pivot_longer(
+    cols = everything(),
+    names_to = "category",
+    values_to = "count"
   )
+
+ggplot(search_table, aes(x = category, y = count, fill = category)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Philadelphia Search Outcomes",
+    y = "Number of Searches",
+    x = ""
+  )
+
 ```
 
 ```{r}

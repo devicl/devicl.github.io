@@ -1,7 +1,7 @@
 ---
 title: "Webfix"
-author: "your name"
-subtitle: "date of presentation"
+author: "Devi Canseco"
+subtitle: "May 13, 2025"
 format:
   revealjs:
     scrollable: true
@@ -13,3 +13,20 @@ execute:
   warning: false
   message: false
 ---
+
+# TidyTuesday
+
+## Groundhog Day Predictions
+
+-   Data on New York Times headlines from RTextTools package
+    -   Date, title, subject of headlines from 1996-2006
+-   Compared total NYT headlines mentions between Bill Clinton and George W. Bush during their consecutive terms (Clinton 1997-2000 and Bush 2001-2004)
+-   Examined word length of headlines across months, with and without punctuation
+
+## The Simpsons's Script
+
+-   characters with over 2000 cumulative word counts.
+
+# Risk Profile
+
+# SQL Drivers
