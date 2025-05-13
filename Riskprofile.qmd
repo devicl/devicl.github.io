@@ -7,10 +7,9 @@ date: April 4, 2025
 format: html
 ---
 
-```{r, inlcude = FALSE}
+```{r, include=FALSE}
 library(tidyverse)
 tuesdata <- tidytuesdayR::tt_load(2024, week = 4)
-
 english_education <- tuesdata$english_education
 ```
 
@@ -27,7 +26,16 @@ size_interest <- english_education |>
   filter(size_flag == "Medium Towns"| size_flag =="Small Towns", na.rm = TRUE)
 ```
 
-The selected variable
+The selected variable to analyze is the education score of medium and small towns.
+
+```{r}
+ggplot(size_interest, aes(x = size_flag, y = education_score)) +
+  geom_boxplot() +
+  labs(title = "Education Score Distribution", x = "City Size", y = "Score")+
+theme_minimal()
+```
+
+It is hard to tell by the graph how much they differ by as the averages seem to be close.
 
 **Single permutation**
 
@@ -42,6 +50,8 @@ permutation_test <- function(reps,data) {
   }
 
 ```
+
+From the permutation test, we can determine how likely these score distributions are to be achieved by chance.
 
 **Repeated simulated trials**
 
@@ -59,14 +69,15 @@ ggplot(under_null, aes(x = mean_perm_diff)) +
   geom_vline(aes(xintercept = mean_diff, color = "red")) +
   labs(title = "Distribution of Permutation Under Null",
        x = "Difference in Mean Scores",
-       y = "Frequency") 
+       y = "Frequency") +
+  theme_minimal()
 ```
 
-From the plot it can be seen that the line representing the observational measurement of education score differences is off-centered. There is a small number of occurrences of simulated under the null. This would mean that the observed difference is more extreme than data created randomly.
+The graph shows the distribution of runs under the permutation conditions. From the plot it can be seen that the line representing the observational measurement of education score differences is off-centered. There is a small number of occurrences of simulated under the null. This would mean that the observed difference is more extreme than data created randomly.
 
 ```{r}
 under_null|>
 summarize(p_value = mean(mean_perm_diff > mean_diff))
 ```
 
-After creating 10000 permutation simulations, the distribution under the null hypothesis falls on zero as there is no expected difference between the two groups. From the results of the p-value, if the significance level, as it usually is, is set to be 0.05, our p-value fall below this level. $\alpha$ \> 0.0139. This means that our data is significantly extreme and would probably not occur by chance.
+After creating 10000 permutation simulations, the distribution under the null hypothesis falls on zero as there is no expected difference between the two groups. From the results of the p-value, if the significance level, as it usually is, is set to be 0.05, our p-value fall below this level. $\alpha$ \> 0.0139. This means that our data is significantly extreme and would probably not occur by chance. This means that size_flags with a value of medium town differed significantly from small towns by education score.

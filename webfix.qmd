@@ -116,6 +116,7 @@ english_education <- tuesdata$english_education
 size_interest <- english_education |>
   filter(size_flag == "Medium Towns"| size_flag =="Small Towns", na.rm = TRUE)
 
+# Single permutation test (simulated data under by chance conditions)
 permutation_test <- function(reps,data) {
   data |>
     select(size_flag, education_score)|>
@@ -125,10 +126,12 @@ permutation_test <- function(reps,data) {
     summarize(mean_diff = abs(diff(mean_score)), mean_perm_diff = diff(mean_perm))
 }
 
+# Running several iterations
 set.seed(123)
 under_null <- map(1:10000, permutation_test, data = size_interest) |>
   list_rbind()
 
+# Plot of several iterations
 ggplot(under_null, aes(x = mean_perm_diff)) +
   geom_histogram(binwidth = 0.1, color = "black", alpha = 0.7) +
   geom_vline(aes(xintercept = mean_diff, color = "red")) +
@@ -186,14 +189,14 @@ FROM (
     SELECT
         'CA' AS state,
          citation_issued
-    FROM ca_statewide_2023_01_26
+    FROM ca_san_francisco_2020_04_01
 
     UNION ALL
 
     SELECT
         'FL' AS state,
         citation_issued
-    FROM fl_statewide_2020_04_01
+    FROM fl_tampa_2020_04_01
 ) combined
 GROUP BY state
 ORDER BY citation_rate DESC;

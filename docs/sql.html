@@ -222,7 +222,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>The data for this analysis comes from the Stanford Open Policing Project, published in Pierson et al.&nbsp;(2020). Which can be found in <a href="https://openpolicing.stanford.edu/data/" class="uri">https://openpolicing.stanford.edu/data/</a>. In this project, I want to compare reasonable driving stops for drivers across states. First, I will compare drivers from California and Florida with the tentative question: Which state has better drivers? To answer this question, I will find and compare the proportion of stops that resulted in a citation for each state. On a second analysis, I will utilize Philadelphia’s data frame to find that searches provided resulted in a reasonable cause when performed. This follows the question: Did they have the right suspicion? I will extract the number of searches that found contraband and compare it to the total number of searches conducted.</p>
 <p><strong>Better Drivers</strong></p>
-<p>In this analysis, the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation.</p>
+<p>In this analysis, the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation. Since the coverage rate for state wide reports did not reach 100%, 69.8% and % for California and Florida, respectively, two cities in these states were chose as representatives of the state. Thereby we compare San Francisco drivers with Tampa drivers. Two cities with large populations.</p>
 <div class="cell" data-output.var="prop_table">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    state,</span>
@@ -233,14 +233,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">'CA'</span> <span class="kw">AS</span> state,</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>         citation_issued</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> ca_statewide_2023_01_26</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> ca_san_francisco_2020_04_01</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">UNION</span> <span class="kw">ALL</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">SELECT</span></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">'FL'</span> <span class="kw">AS</span> state,</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>        citation_issued</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> fl_statewide_2020_04_01</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">FROM</span> fl_tampa_2020_04_01</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>) combined</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> state</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> citation_rate <span class="kw">DESC</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -249,8 +249,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(prop_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  state total_stops citations citation_rate
-1    FL     7297538   3707393          0.51
-2    CA    31778515    739127          0.02</code></pre>
+1    FL     2818240   2818240           1.0
+2    CA      905070    631660           0.7</code></pre>
 </div>
 </div>
 <p>The table shows numerically how many stops and how many of those stops resulted in citations.</p>
@@ -270,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>From the graph, it can be seen that there is a large difference between the proportion of drivers who were stopped AND received a citation in California and Florida. While no conclusions can be drawn from this snippet of data, it can be speculated that perhaps Californian drivers are better drivers and did not commit violations that guaranteed a citation, or it could also propose the idea that traffic officers are more lenient to driving mistakes.</p>
+<p>From the graph, it can be seen that there is a large difference between the proportion of drivers who were stopped AND received a citation in San Francisco, California and Tampa, Florida. While no conclusions can be drawn from this snippet of data, it can be speculated that perhaps Californian drivers are better drivers and did not commit violations that guaranteed a citation, or it could also propose the idea that traffic officers are more lenient to driving mistakes. Both show a small proportion, which could speak about the cities themselves.</p>
 <p><strong>Evidence Found</strong></p>
 <p>In this analysis, the data is taken from the Philadelphia, PA table. It seeks to find if searches resulted in finding evidence for a suspected holding of contraband.</p>
 <div class="cell" data-output.var="contr_table">

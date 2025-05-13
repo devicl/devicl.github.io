@@ -29,7 +29,7 @@ The data for this analysis comes from the Stanford Open Policing Project, publis
 
 **Better Drivers**
 
-In this analysis, the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation.
+In this analysis, the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation. Since the coverage rate for state wide reports did not reach 100%, 69.8% and % for California and Florida, respectively, two cities in these states were chose as representatives of the state. Thereby we compare San Francisco drivers with Tampa drivers. Two cities with large populations.
 
 ```{sql}
 #| connection: con_traffic
@@ -44,14 +44,14 @@ FROM (
     SELECT
         'CA' AS state,
          citation_issued
-    FROM ca_statewide_2023_01_26
+    FROM ca_san_francisco_2020_04_01
 
     UNION ALL
 
     SELECT
         'FL' AS state,
         citation_issued
-    FROM fl_statewide_2020_04_01
+    FROM fl_tampa_2020_04_01
 ) combined
 GROUP BY state
 ORDER BY citation_rate DESC;
@@ -73,7 +73,7 @@ ggplot(prop_table, aes(x = state, y = citation_rate)) +
   ) 
 ```
 
-From the graph, it can be seen that there is a large difference between the proportion of drivers who were stopped AND received a citation in California and Florida. While no conclusions can be drawn from this snippet of data, it can be speculated that perhaps Californian drivers are better drivers and did not commit violations that guaranteed a citation, or it could also propose the idea that traffic officers are more lenient to driving mistakes.
+From the graph, it can be seen that there is a large difference between the proportion of drivers who were stopped AND received a citation in San Francisco, California and Tampa, Florida. While no conclusions can be drawn from this snippet of data, it can be speculated that perhaps Californian drivers are better drivers and did not commit violations that guaranteed a citation, or it could also propose the idea that traffic officers are more lenient to driving mistakes. Both show a small proportion, which could speak about the cities themselves.
 
 **Evidence Found**
 
