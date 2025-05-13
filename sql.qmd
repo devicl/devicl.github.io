@@ -23,9 +23,11 @@ con_traffic <- DBI::dbConnect(
 
 ```
 
+The data for this analysis comes from the Stanford Open Policing Project, published in Pierson et al. (2020). Which can be found in <https://openpolicing.stanford.edu/data/>. In this project, I want to compare reasonable driving stops for drivers across states. First, I will compare drivers from California and Florida with the tentative question: Which state has better drivers? To answer this question, I will find and compare the proportion of stops that resulted in a citation for each state. On a second analysis, I will utilize Philadelphia's data frame to find that searches provided resulted in a reasonable cause when performed. This follows the question: Did they have the right suspicion? I will extract the number of searches that found contraband and compare it to the total number of searches conducted.
+
 **Better Drivers**
 
-In this analysis the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation.
+In this analysis, the statewide reports of LA and FL are used to form a comparison of the proportion of drivers issued a citation.
 
 ```{sql}
 #| connection: con_traffic
