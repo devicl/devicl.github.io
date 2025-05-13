@@ -18,10 +18,45 @@ execute:
 
 ## Groundhog Day Predictions
 
--   Data on New York Times headlines from RTextTools package
-    -   Date, title, subject of headlines from 1996-2006
--   Compared total NYT headlines mentions between Bill Clinton and George W. Bush during their consecutive terms (Clinton 1997-2000 and Bush 2001-2004)
--   Examined word length of headlines across months, with and without punctuation
+-   TidyTuesday's January 30, 2024
+-   Looking at the spring arrival predictions from groundhogs across America and Canada
+-   Have predictions increased over the years, and do they lean towards one prediction result?
+-   Which groundhog is contributing to the results?
+
+## Increasing Predictions
+
+```{r, echo =FALSE}
+tuesdata <- tidytuesdayR::tt_load('2024-01-30')
+groundhogs <- tuesdata$groundhogs
+predictions <- tuesdata$predictions
+
+library(tidyverse)
+
+ggplot(predictions, aes(x = year, fill = shadow)) +
+  geom_bar() +
+  labs(
+    title = "Yearly Shadow Predictions",
+    x = "Year",
+    y = "Total Predictions"
+  ) + theme_minimal()
+
+```
+
+## Groundhog Contribution
+
+```{r, echo=FALSE}
+id_prediction  <- predictions |>
+  group_by(id) |>
+  summarize(total_shadow_count = sum(shadow, na.rm = TRUE))
+
+ggplot(id_prediction,  aes(x = id, y = total_shadow_count)) +
+  geom_col() +
+  labs(
+    title = "Longer winter predictions per Ground Hog",
+    x = "Groundhog identification",
+    y = "Saw Shadow Count"
+  ) + theme_minimal()
+```
 
 ## The Simpsons's Script
 
@@ -105,9 +140,9 @@ ggplot(under_null, aes(x = mean_perm_diff)) +
 
 ## Conclusions
 
--   P-value =
+-   P-value = 0.0139
 
--   
+-   There is a significant difference between education scores of medium-sized and small-sized towns
 
 # SQL Drivers
 

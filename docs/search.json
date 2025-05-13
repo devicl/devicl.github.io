@@ -4,7 +4,21 @@
     "href": "webfix.html#groundhog-day-predictions",
     "title": "DS002R Projects Presentation",
     "section": "Groundhog Day Predictions",
-    "text": "Groundhog Day Predictions\n\nData on New York Times headlines from RTextTools package\n\nDate, title, subject of headlines from 1996-2006\n\nCompared total NYT headlines mentions between Bill Clinton and George W. Bush during their consecutive terms (Clinton 1997-2000 and Bush 2001-2004)\nExamined word length of headlines across months, with and without punctuation"
+    "text": "Groundhog Day Predictions\n\nTidyTuesday’s January 30, 2024\nLooking at the spring arrival predictions from groundhogs across America and Canada\nHave predictions increased over the years, and do they lean towards one prediction result?\nWhich groundhog is contributing to the results?"
+  },
+  {
+    "objectID": "webfix.html#increasing-predictions",
+    "href": "webfix.html#increasing-predictions",
+    "title": "DS002R Projects Presentation",
+    "section": "Increasing Predictions",
+    "text": "Increasing Predictions"
+  },
+  {
+    "objectID": "webfix.html#groundhog-contribution",
+    "href": "webfix.html#groundhog-contribution",
+    "title": "DS002R Projects Presentation",
+    "section": "Groundhog Contribution",
+    "text": "Groundhog Contribution"
   },
   {
     "objectID": "webfix.html#the-simpsonss-script",
@@ -39,7 +53,7 @@
     "href": "webfix.html#conclusions-1",
     "title": "DS002R Projects Presentation",
     "section": "Conclusions",
-    "text": "Conclusions\n\nP-value ="
+    "text": "Conclusions\n\nP-value = 0.0139\nThere is a significant difference between education scores of medium-sized and small-sized towns"
   },
   {
     "objectID": "webfix.html#florida-vs-california",
